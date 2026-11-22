@@ -3,10 +3,35 @@
 This repository contains a simple example of a proof of the Central Limit Theorem to
 help me learn Lean 4.
 
+The Central Limit Theorem is already formalized in Lean 4, [tendstoInDistribution_inv_sqrt_mul_sum_sub](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Probability/CentralLimitTheorem.html) but it will be proved here as a Lean 4 example to learn from. Though Mathlib's existing results for foundational facts will be used to help without invoking its completed CLT theorem.
+
+In particular, the Central Limit Theorem for i.i.d. sequences, as stated below from Durrett, R. (2019) *Probability: Theory and Examples*, will be proved. And tfor the most part the proof from Chapter/Section 3.4.1 Durrett, R. (2019) will be used but aim to minimize the use of complex analysis by working with real-valued sine and cosine functions wherever possible.
+
+Let $X_1, X_2, \ldots$ be independent and identically distributed
+random variables with
+
+$$
+\mathbb{E}X_i = \mu,
+\qquad
+\operatorname{var}(X_i) = \sigma^2 \in (0,\infty).
+$$
+
+If $S_n = X_1 + \cdots + X_n$, then
+
+$$
+\frac{S_n - n\mu}{\sigma\sqrt{n}}
+\xrightarrow{d} \chi,
+$$
+
+where $\chi$ has the standard normal distribution.
+
+**Source:** Durrett, R. (2019). *Probability: Theory and Examples*
+(5th ed.), Theorem 3.4.1. Cambridge University Press.
+
 # Installing Lean 4 and setting up VS Code
 
 ## Install the VS Code extension
-Assuming you're developing on macOS and using VS Code, install Lean 4 from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4&utm_source=chatgpt.com). Or install it using the terminal,
+Assuming you're developing on macOS and using VS Code, install Lean 4 from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4). Or install it using the terminal,
 
 ```
 code --install-extension leanprover.lean4
@@ -33,7 +58,7 @@ lake --version
 In Lean two tools, elan and lake, are responaible for language version management, project creation, dependency management and builds.
 
 - [**Elan**](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Managing-Toolchains-with-Elan/#elan) manages Lean installations and selects which Lean version to use.
-- [**Lake**](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/?utm_source=chatgpt.com) creates projects, manages dependencies, and builds Lean code.
+- [**Lake**](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/) creates projects, manages dependencies, and builds Lean code.
 
 ## Creating a Lean Project
 
@@ -77,7 +102,7 @@ lake build
 | Remove build artifacts | lake clean |
 
 # Other Information and References
-Below are references and links provided by the setup guide after installing [Lean 4 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4&utm_source=chatgpt.com) taken from the [Lean 4 VS Code GitHub Repo](https://github.com/leanprover/vscode-lean4/tree/v0.0.242)
+Below are references and links provided by the setup guide after installing [Lean 4 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4) taken from the [Lean 4 VS Code GitHub Repo](https://github.com/leanprover/vscode-lean4/tree/v0.0.242)
 
 ## [Books and Documentation](https://raw.githubusercontent.com/leanprover/vscode-lean4/refs/tags/v0.0.242/vscode-lean4/media/guide-documentation.md)
 
