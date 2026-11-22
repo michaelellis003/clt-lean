@@ -24,6 +24,9 @@ relaxedAutoImplicit = false
 # Enable Mathlib's standard style linters.
 weak.linter.mathlibStandardSet = true
 
+# License header for all source files.
+weak.linter.style.header.license = "Released under the MIT license as described in the file LICENSE."
+
 # Treat Lean warnings as compilation errors.
 warningAsError = true
 
