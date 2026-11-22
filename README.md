@@ -1,6 +1,6 @@
 # Central Limit Theorem proof as a Lean 4 example
 
-This repository contains a simple example of a proof of the central limit theorem to
+This repository contains a simple example of a proof of the Central Limit Theorem to
 help me learn Lean 4.
 
 # Installing Lean 4 and setting up VS Code
@@ -13,7 +13,7 @@ code --install-extension leanprover.lean4
 ```
 You will need the [VS Code CLI](https://code.visualstudio.com/docs/configure/command-line) installed to run this command.
 
-# Install Elan
+## Install Elan
 Elan is a tool from "managing different Lean versions used in packages you create or download." You can install it from the terminal 
 
 ```
@@ -30,6 +30,51 @@ lean --version
 lake --version
 ```
 
+In Lean two tools, elan and lake, are responaible for language version management, project creation, dependency management and builds.
+
+- [**Elan**](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Managing-Toolchains-with-Elan/#elan) manages Lean installations and selects which Lean version to use.
+- [**Lake**](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/?utm_source=chatgpt.com) creates projects, manages dependencies, and builds Lean code.
+
+## Creating a Lean Project
+
+Lean 4 uses a 'toolchain'. A toolchain includes:
+- Lean compiler: Compiles Lean source code and checks mathematical proofs.
+- Lean language server: Provides diagnostics, autocomplete, and interactive proof states in VS Code.
+- Lake: Lean's build system and package manager.
+- Supporting binaries and libraries: Components needed by the compiler and other tools.
+
+We will want to prove the Central Limit Theorem and to help us we will use some the open source library [Mathlib](https://github.com/leanprover-community/mathlib4) that has defintions and results we can build upon instead of starting from scratch. But in order to use this we will need to use the Lean toolchain specified by the Mathlib repository.
+
+If you're already inside the folder where you want your Lean project, run:
+```
+lake +leanprover-community/mathlib4:lean-toolchain init clt math
+```
+
+Otherwise, if you want to create the folder and initialize the Lean project in that
+newly created folder run:
+```
+lake +leanprover-community/mathlib4:lean-toolchain new clt math
+```
+
+The difference is the `init` vs `new` command. Of course here I named my project `clt` because I am using the Central Limit Theorem as an example. You change this for your project. In these commands the `+leanprover-community/mathlib4:lean-toolchain` is what tells Elan to use the Lean toolchain specified by the Mathlib repository. The `math` statement at the end of command defines a template we want to use. The `math` template sets up a project intended for formalizing mathematics using Mathlib.
+
+Then inside either current directory or your newly created directly run:
+```
+lake exe cache get
+lake build
+```
+
+## Dependency management with Lake
+| Task	| Command |
+| Create project | lake new <project-name> math |
+| Resolve or update dependencies | lake update |
+| Build project	| lake build |
+| Build a particular target	| lake build <project-name> |
+| Download Mathlib cache | lake exe cache get |
+| Run a Lean file	| lake env lean File.lean |
+| Run tests | lake test |
+| Run linters | lake lint |
+| Remove build artifacts | lake clean |
 
 # Other Information and References
 Below are references and links provided by the setup guide after installing [Lean 4 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4&utm_source=chatgpt.com) taken from the [Lean 4 VS Code GitHub Repo](https://github.com/leanprover/vscode-lean4/tree/v0.0.242)

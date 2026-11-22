@@ -1,0 +1,46 @@
+
+name = "clt"
+version = "0.1.0"
+keywords = ["math"]
+
+# Targets compiled by `lake build`.
+defaultTargets = ["Clt"]
+
+# Linting and testing drivers.
+lintDriver = "batteries/runLinter"
+testDriver = "CltTest"
+
+# Run Lake's built-in linters as well.
+builtinLint = true
+
+[leanOptions]
+# Display functions using ↦ notation.
+pp.unicode.fun = true
+
+# Require explicitly declared variables.
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Enable Mathlib's standard style linters.
+weak.linter.mathlibStandardSet = true
+
+# Treat Lean warnings as compilation errors.
+warningAsError = true
+
+# Preserve the Mathlib template's typeclass search setting.
+maxSynthPendingDepth = 3
+
+# Mathematical library dependencies.
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.37.0-rc1"
+
+# Main project library.
+[[lean_lib]]
+name = "Clt"
+
+# Test library.
+[[lean_lib]]
+name = "CltTest"
+globs = ["CltTest.+"]
