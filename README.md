@@ -3,7 +3,7 @@
 This repository contains a simple example of a proof of the central limit theorem to
 help me learn Lean 4. 
 
-Below a references and links provided by the setup guide after installing [Lean 4 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4&utm_source=chatgpt.com) taken from the [Lean 4 VS Code GitHub Repo](https://github.com/leanprover/vscode-lean4/tree/v0.0.242)
+Below are references and links provided by the setup guide after installing [Lean 4 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4&utm_source=chatgpt.com) taken from the [Lean 4 VS Code GitHub Repo](https://github.com/leanprover/vscode-lean4/tree/v0.0.242)
 
 # [Books and Documentation](https://raw.githubusercontent.com/leanprover/vscode-lean4/refs/tags/v0.0.242/vscode-lean4/media/guide-documentation.md)
 
