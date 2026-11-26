@@ -1,14 +1,14 @@
 
-name = "clt"
+name = "Example"
 version = "0.1.0"
 keywords = ["math"]
 
 # Targets compiled by `lake build`.
-defaultTargets = ["Clt"]
+defaultTargets = ["Example"]
 
 # Linting and testing drivers.
 lintDriver = "batteries/runLinter"
-testDriver = "CltTest"
+testDriver = "ExampleTest"
 
 # Run Lake's built-in linters as well.
 builtinLint = true
@@ -41,9 +41,9 @@ rev = "v4.37.0-rc1"
 
 # Main project library.
 [[lean_lib]]
-name = "Clt"
+name = "Example"
 
 # Test library.
 [[lean_lib]]
-name = "CltTest"
-globs = ["CltTest.+"]
+name = "ExampleTest"
+globs = ["ExampleTest.+"]
